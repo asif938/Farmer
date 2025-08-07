@@ -18,6 +18,8 @@ const ctx1 = document.getElementById('locationChart').getContext('2d');
                 }]
             },
             options: {
+                responsive: true,
+                maintainAspectRatio: false,
                 scales: {
                     x: {
                         type: 'category',
@@ -26,10 +28,10 @@ const ctx1 = document.getElementById('locationChart').getContext('2d');
                             drawTicks: true
                         },
                         ticks: {
-                            // maxRotation: 0,      
-                            // minRotation: 0,     
                             align: 'center',  
-                            padding: 8,          
+                            padding: 8,
+                            maxRotation: 45,
+                            minRotation: 0,
                             callback: (val, index) => {
                                 const mainLabels = ['Bogura', 'Chattogram', 'Jashore', 'Khulna', 'Rajshahi', 'Rashmahi'];
                                 if ([0, 2, 4, 6, 8, 10].includes(index)) {
@@ -55,12 +57,7 @@ const ctx1 = document.getElementById('locationChart').getContext('2d');
                     legend: { display: false }
                 }
             }
-
-
         });
-
-
-
 
         const ctx2 = document.getElementById('cropChart').getContext('2d');
         const cropChart = new Chart(ctx2, {
@@ -73,7 +70,8 @@ const ctx1 = document.getElementById('locationChart').getContext('2d');
                 }]
             },
             options: {
-                responsive: false,
+                responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
                     legend: {
                         display: false 
@@ -94,6 +92,5 @@ const ctx1 = document.getElementById('locationChart').getContext('2d');
                     }
                 }
             },
-
             plugins: [ChartDataLabels]
         });
